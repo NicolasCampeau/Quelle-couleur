@@ -39,56 +39,63 @@
   <button onclick="changerVue()">Voir la réponse</button>
 
   <script>
-    const data = {
-      "une boîte de Coca-Cola": "rouge",
-      "un citron": "jaune",
-      "un panda": "noir et blanc",
-      "la pelouse": "verte",
-      "le ciel par temps clair": "bleu",
-      "une orange": "orange",
-      "un corbeau": "noir",
-      "le lait": "blanc",
-      "une aubergine": "violet",
-      "un feu de circulation pour 'stop'": "rouge",
-      "le logo de Facebook": "bleu",
-      "un kiwi (extérieur)": "brun",
-      "un kiwi (intérieur)": "vert",
-      "le drapeau du Canada (la feuille)": "rouge",
-      "la neige": "blanc",
-      "une fraise": "rouge"
-    };
+  const data = {
+    "une boîte de Coca-Cola": "rouge",
+    "un citron": "jaune",
+    "un panda": "noir et blanc",
+    "la pelouse": "verte",
+    "le ciel par temps clair": "bleu",
+    "une orange": "orange",
+    "un corbeau": "noir",
+    "le lait": "blanc",
+    "une aubergine": "violet",
+    "un feu de circulation pour 'stop'": "rouge",
+    "le logo de Facebook": "bleu",
+    "un kiwi (extérieur)": "brun",
+    "un kiwi (intérieur)": "vert",
+    "le drapeau du Canada (la feuille)": "rouge",
+    "la neige": "blanc",
+    "une fraise": "rouge"
+  };
 
-    let questionCourante = "";
-    let reponseCourante = "";
-    let modeQuestion = true;
+  let questionsRestantes = Object.keys(data);
+  let questionCourante = "";
+  let reponseCourante = "";
+  let modeQuestion = true;
 
-    function choisirQuestion() {
-      const objets = Object.keys(data);
-      const objet = objets[Math.floor(Math.random() * objets.length)];
-      questionCourante = "De quelle couleur est " + objet + " ?";
-      reponseCourante = "Réponse : " + data[objet];
+  function choisirQuestion() {
+    if (questionsRestantes.length === 0) {
+      document.getElementById("question").textContent = "🎉 Toutes les questions ont été posées !";
+      document.querySelector("button").style.display = "none";
+      return;
     }
 
-    function changerVue() {
-      const affichage = document.getElementById("question");
-      const bouton = document.querySelector("button");
+    const index = Math.floor(Math.random() * questionsRestantes.length);
+    const objet = questionsRestantes.splice(index, 1)[0]; // retire la question choisie
+    questionCourante = "De quelle couleur est " + objet + " ?";
+    reponseCourante = "Réponse : " + data[objet];
+  }
 
-      if (modeQuestion) {
-        affichage.textContent = reponseCourante;
-        bouton.textContent = "Question suivante";
-      } else {
-        choisirQuestion();
-        affichage.textContent = questionCourante;
-        bouton.textContent = "Voir la réponse";
-      }
+  function changerVue() {
+    const affichage = document.getElementById("question");
+    const bouton = document.querySelector("button");
 
-      modeQuestion = !modeQuestion;
+    if (modeQuestion) {
+      affichage.textContent = reponseCourante;
+      bouton.textContent = "Question suivante";
+    } else {
+      choisirQuestion();
+      affichage.textContent = questionCourante;
+      bouton.textContent = "Voir la réponse";
     }
 
-    // Initialisation
-    choisirQuestion();
-    document.getElementById("question").textContent = questionCourante;
-  </script>
+    modeQuestion = !modeQuestion;
+  }
+
+  // Initialisation
+  choisirQuestion();
+  document.getElementById("question").textContent = questionCourante;
+</script>
 
 </body>
 </html>
