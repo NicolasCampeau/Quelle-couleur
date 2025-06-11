@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quelle couleur ? 🎨</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    #question {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quelle couleur ? 🎨</h1>
+  <div id="question">Chargement...</div>
+  <button onclick="changerVue()">Voir la réponse</button>
+
+  <script>
+    const data = {
+      "une boîte de Coca-Cola": "rouge",
+      "un citron": "jaune",
+      "un panda": "noir et blanc",
+      "la pelouse": "verte",
+      "le ciel par temps clair": "bleu",
+      "une orange": "orange",
+      "un corbeau": "noir",
+      "le lait": "blanc",
+      "une aubergine": "violet",
+      "un feu de circulation pour 'stop'": "rouge",
+      "le logo de Facebook": "bleu",
+      "un kiwi (extérieur)": "brun",
+      "un kiwi (intérieur)": "vert",
+      "le drapeau du Canada (la feuille)": "rouge",
+      "la neige": "blanc",
+      "une fraise": "rouge"
+    };
+
+    let questionCourante = "";
+    let reponseCourante = "";
+    let modeQuestion = true;
+
+    function choisirQuestion() {
+      const objets = Object.keys(data);
+      const objet = objets[Math.floor(Math.random() * objets.length)];
+      questionCourante = "De quelle couleur est " + objet + " ?";
+      reponseCourante = "Réponse : " + data[objet];
+    }
+
+    function changerVue() {
+      const affichage = document.getElementById("question");
+      const bouton = document.querySelector("button");
+
+      if (modeQuestion) {
+        affichage.textContent = reponseCourante;
+        bouton.textContent = "Question suivante";
+      } else {
+        choisirQuestion();
+        affichage.textContent = questionCourante;
+        bouton.textContent = "Voir la réponse";
+      }
+
+      modeQuestion = !modeQuestion;
+    }
+
+    // Initialisation
+    choisirQuestion();
+    document.getElementById("question").textContent = questionCourante;
+  </script>
+
+</body>
+</html>
