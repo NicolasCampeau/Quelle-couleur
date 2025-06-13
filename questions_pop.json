@@ -1,12 +1,198 @@
 [
-  { "objet": "le sabre laser de Luke Skywalker", "couleur": "bleu" },
-  { "objet": "la casquette de Mario", "couleur": "rouge" },
-  { "objet": "la peau de Hulk", "couleur": "verte" },
-  { "objet": "le gant de Thanos", "couleur": "doré" },
-  { "objet": "le logo de McDonald’s", "couleur": "jaune" },
-  { "objet": "l'armure d'Iron Man", "couleur": "rouge et or" },
-  { "objet": "le casque de Dark Vador", "couleur": "noir" },
-  { "objet": "le ballon d’It (le clown)", "couleur": "rouge" },
-  { "objet": "le logo de Netflix", "couleur": "rouge" },
-  { "objet": "le costume de Spider-Man", "couleur": "rouge et bleu" }
+  {
+    "objet": "De quelle(s) couleur(s) est le logo d’Apple ? (1 couleur)",
+    "couleur": "blanc"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de McDonald’s ? (1 couleur)",
+    "couleur": "jaune"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la fourrure de Totoro ? (1 couleur)",
+    "couleur": "gris"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la robe d’Elsa (La Reine des Neiges) ? (1 couleur)",
+    "couleur": "bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Facebook ? (1 couleur)",
+    "couleur": "bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Pepsi ? (3 couleurs)",
+    "couleur": "rouge, blanc et bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo d’Instagram ? (4 couleurs)",
+    "couleur": "rose, orange, jaune et violet"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Discord ? (1 couleur)",
+    "couleur": "bleu clair"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le casque de Master Chief (Halo) ? (1 couleur)",
+    "couleur": "vert"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Twitch ? (1 couleur)",
+    "couleur": "violet"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le plastron de Buzz l’Éclair ? (3 couleurs)",
+    "couleur": "blanc, vert et violet"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le bouclier de Captain America ? (3 couleurs)",
+    "couleur": "rouge, blanc et bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le sabre laser de Luke Skywalker ? (1 couleur)",
+    "couleur": "bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la fourrure de Pikachu ? (1 couleur)",
+    "couleur": "jaune"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de YouTube ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Pokémon ? (2 couleurs)",
+    "couleur": "jaune et bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le chapeau de Charlie (Où est Charlie ?) ? (2 couleurs)",
+    "couleur": "rouge et blanc"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est les cheveux de Marge Simpson ? (1 couleur)",
+    "couleur": "bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le gant de Thanos ? (1 couleur)",
+    "couleur": "doré"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la peau de Hulk ? (1 couleur)",
+    "couleur": "verte"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la fourrure de Sonic ? (1 couleur)",
+    "couleur": "bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le drapeau du Japon ? (2 couleurs)",
+    "couleur": "rouge et blanc"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est l'armure d'Iron Man ? (2 couleurs)",
+    "couleur": "rouge et or"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le ballon d’It (le clown) ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le chapeau de la Schtroumpfette ? (1 couleur)",
+    "couleur": "blanc"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le sabre laser de Mace Windu ? (1 couleur)",
+    "couleur": "violet"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le masque de Black Panther ? (1 couleur)",
+    "couleur": "noir"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Batman ? (2 couleurs)",
+    "couleur": "noir et jaune"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la peau de Shrek ? (1 couleur)",
+    "couleur": "verte"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le t-shirt de Bart Simpson ? (1 couleur)",
+    "couleur": "orange"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le feu de camp dans Minecraft ? (2 couleurs)",
+    "couleur": "orange et jaune"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le costume de Spider-Man ? (2 couleurs)",
+    "couleur": "rouge et bleu"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le pull de Freddy Krueger ? (2 couleurs)",
+    "couleur": "rouge et vert"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la cravate de Donkey Kong ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le plastron de Samus Aran ? (2 couleurs)",
+    "couleur": "orange et rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Google ? (4 couleurs)",
+    "couleur": "bleu, rouge, jaune et vert"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le sabre laser de Kylo Ren ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le gilet de Marty McFly ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le casque de Dark Vador ? (1 couleur)",
+    "couleur": "noir"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la casquette de Mario ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de TikTok ? (3 couleurs)",
+    "couleur": "noir, bleu et rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le drapeau de Gryffondor ? (2 couleurs)",
+    "couleur": "rouge et or"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Starbucks ? (1 couleur)",
+    "couleur": "vert"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le sac à dos de Dora l’exploratrice ? (1 couleur)",
+    "couleur": "rose"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le logo de Netflix ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la tenue de Link (Zelda) ? (1 couleur)",
+    "couleur": "verte"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le short de Mickey Mouse ? (1 couleur)",
+    "couleur": "rouge"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est le chapeau de Luigi ? (1 couleur)",
+    "couleur": "vert"
+  },
+  {
+    "objet": "De quelle(s) couleur(s) est la robe de Belle (La Belle et la Bête) ? (1 couleur)",
+    "couleur": "jaune"
+  }
 ]
