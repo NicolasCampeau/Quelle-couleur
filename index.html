@@ -38,42 +38,38 @@
   <div id="question">Chargement...</div>
   <button onclick="changerVue()">Voir la réponse</button>
 
-  <script>
-  const data = {
-    "une boîte de Coca-Cola": "rouge",
-    "un citron": "jaune",
-    "un panda": "noir et blanc",
-    "la pelouse": "verte",
-    "le ciel par temps clair": "bleu",
-    "une orange": "orange",
-    "un corbeau": "noir",
-    "le lait": "blanc",
-    "une aubergine": "violet",
-    "un feu de circulation pour 'stop'": "rouge",
-    "le logo de Facebook": "bleu",
-    "un kiwi (extérieur)": "brun",
-    "un kiwi (intérieur)": "vert",
-    "le drapeau du Canada (la feuille)": "rouge",
-    "la neige": "blanc",
-    "une fraise": "rouge"
-  };
+<script>
+  const couleurs = ["rouge", "jaune", "bleu", "vert", "noir", "blanc", "orange", "violet", "brun", "rose", "gris"];
+  const objets = [
+    "une voiture", "un ballon", "un chapeau", "une fleur", "un dragon", "une pomme", "un oiseau", "un livre", "un parapluie",
+    "une chaussure", "une guitare", "un vélo", "un canapé", "une tasse", "un sac à dos"
+  ];
 
-  let questionsRestantes = Object.keys(data);
+  // Générer toutes les combinaisons possibles
+  let combinaisonsRestantes = [];
+  for (let couleur of couleurs) {
+    for (let objet of objets) {
+      combinaisonsRestantes.push({ objet, couleur });
+    }
+  }
+
+  // Mélanger une fois la liste
+  combinaisonsRestantes = combinaisonsRestantes.sort(() => Math.random() - 0.5);
+
   let questionCourante = "";
   let reponseCourante = "";
   let modeQuestion = true;
 
   function choisirQuestion() {
-    if (questionsRestantes.length === 0) {
-      document.getElementById("question").textContent = "🎉 Toutes les questions ont été posées !";
+    if (combinaisonsRestantes.length === 0) {
+      document.getElementById("question").textContent = "🎉 Toutes les combinaisons ont été utilisées !";
       document.querySelector("button").style.display = "none";
       return;
     }
 
-    const index = Math.floor(Math.random() * questionsRestantes.length);
-    const objet = questionsRestantes.splice(index, 1)[0]; // retire la question choisie
-    questionCourante = "De quelle couleur est " + objet + " ?";
-    reponseCourante = "Réponse : " + data[objet];
+    const combo = combinaisonsRestantes.pop(); // retire une combinaison
+    questionCourante = `De quelle couleur est ${combo.objet} ?`;
+    reponseCourante = `Réponse : ${combo.couleur}`;
   }
 
   function changerVue() {
