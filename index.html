@@ -2,96 +2,61 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quelle couleur ? 🎨</title>
+  <title>Quelle couleur ?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2rem;
-      background-color: #f4f4f4;
-    }
-    h1 {
-      font-size: 1.8rem;
-    }
-    #question {
-      font-size: 1.5rem;
-      margin: 2rem 0;
-    }
-    button {
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 10px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
+    body { font-family: sans-serif; text-align: center; margin-top: 20vh; padding: 1em; }
+    button { padding: 1em; font-size: 1.2em; margin-top: 1em; }
+    #question { font-size: 1.5em; margin-bottom: 2em; }
   </style>
 </head>
 <body>
-
-  <h1>Quelle couleur ? 🎨</h1>
   <div id="question">Chargement...</div>
-  <button onclick="changerVue()">Voir la réponse</button>
+  <button onclick="changerVue()" style="display:none">Voir la réponse</button>
 
-<script>
-  const couleurs = ["rouge", "jaune", "bleu", "vert", "noir", "blanc", "orange", "violet", "brun", "rose", "gris"];
-  const objets = [
-    "une voiture", "un ballon", "un chapeau", "une fleur", "un dragon", "une pomme", "un oiseau", "un livre", "un parapluie",
-    "une chaussure", "une guitare", "un vélo", "un canapé", "une tasse", "un sac à dos"
-  ];
+  <script>
+    let questions = [];
+    let questionCourante = "";
+    let reponseCourante = "";
+    let modeQuestion = true;
 
-  // Générer toutes les combinaisons possibles
-  let combinaisonsRestantes = [];
-  for (let couleur of couleurs) {
-    for (let objet of objets) {
-      combinaisonsRestantes.push({ objet, couleur });
-    }
-  }
-
-  // Mélanger une fois la liste
-  combinaisonsRestantes = combinaisonsRestantes.sort(() => Math.random() - 0.5);
-
-  let questionCourante = "";
-  let reponseCourante = "";
-  let modeQuestion = true;
-
-  function choisirQuestion() {
-    if (combinaisonsRestantes.length === 0) {
-      document.getElementById("question").textContent = "🎉 Toutes les combinaisons ont été utilisées !";
-      document.querySelector("button").style.display = "none";
-      return;
-    }
-
-    const combo = combinaisonsRestantes.pop(); // retire une combinaison
-    questionCourante = `De quelle couleur est ${combo.objet} ?`;
-    reponseCourante = `Réponse : ${combo.couleur}`;
-  }
-
-  function changerVue() {
-    const affichage = document.getElementById("question");
-    const bouton = document.querySelector("button");
-
-    if (modeQuestion) {
-      affichage.textContent = reponseCourante;
-      bouton.textContent = "Question suivante";
-    } else {
+    async function chargerQuestions() {
+      const response = await fetch("questions_pop.json");
+      const data = await response.json();
+      questions = data.sort(() => Math.random() - 0.5); // mélange aléatoire
       choisirQuestion();
-      affichage.textContent = questionCourante;
-      bouton.textContent = "Voir la réponse";
+      document.getElementById("question").textContent = questionCourante;
+      document.querySelector("button").style.display = "inline-block";
     }
 
-    modeQuestion = !modeQuestion;
-  }
+    function choisirQuestion() {
+      if (questions.length === 0) {
+        document.getElementById("question").textContent = "🎉 Toutes les questions ont été posées !";
+        document.querySelector("button").style.display = "none";
+        return;
+      }
+      const obj = questions.pop();
+      questionCourante = `De quelle couleur est ${obj.objet} ?`;
+      reponseCourante = `Réponse : ${obj.couleur}`;
+    }
 
-  // Initialisation
-  choisirQuestion();
-  document.getElementById("question").textContent = questionCourante;
-</script>
+    function changerVue() {
+      const affichage = document.getElementById("question");
+      const bouton = document.querySelector("button");
 
+      if (modeQuestion) {
+        affichage.textContent = reponseCourante;
+        bouton.textContent = "Question suivante";
+      } else {
+        choisirQuestion();
+        affichage.textContent = questionCourante;
+        bouton.textContent = "Voir la réponse";
+      }
+      modeQuestion = !modeQuestion;
+    }
+
+    // Lancer au démarrage
+    chargerQuestions();
+  </script>
 </body>
 </html>
