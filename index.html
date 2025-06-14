@@ -13,50 +13,77 @@
 <body>
   <div id="question">Chargement...</div>
   <button onclick="changerVue()" style="display:none">Voir la réponse</button>
+  <button onclick="reinitialiser()">🔁 Réinitialiser</button>
 
-  <script>
-    let questions = [];
-    let questionCourante = "";
-    let reponseCourante = "";
-    let modeQuestion = true;
 
-    async function chargerQuestions() {
-      const response = await fetch("questions_pop.json");
-      const data = await response.json();
-      questions = data.sort(() => Math.random() - 0.5); // mélange aléatoire
+<script>
+  let questions = [];
+  let questionCourante = "";
+  let reponseCourante = "";
+  let modeQuestion = true;
+  const STORAGE_KEY = "questionsDejaVues";
+
+  async function chargerQuestions() {
+    const response = await fetch("questions_pop.json");
+    const data = await response.json();
+
+    // Charger les questions déjà vues
+    const dejaVues = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+    // Filtrer pour ne garder que celles non vues
+    questions = data.filter(q => !dejaVues.includes(q.objet));
+
+    if (questions.length === 0) {
+      document.getElementById("question").textContent = "🎉 Tu as vu toutes les questions !";
+      document.querySelector("button").style.display = "none";
+      return;
+    }
+
+    questions = questions.sort(() => Math.random() - 0.5);
+    choisirQuestion();
+    document.getElementById("question").textContent = questionCourante;
+    document.querySelector("button").style.display = "inline-block";
+  }
+
+  function choisirQuestion() {
+    if (questions.length === 0) {
+      document.getElementById("question").textContent = "🎉 Toutes les questions ont été posées !";
+      document.querySelector("button").style.display = "none";
+      return;
+    }
+    const obj = questions.pop();
+    questionCourante = obj.objet;
+    reponseCourante = `Réponse : ${obj.couleur}`;
+
+    // Ajouter à l'historique
+    const dejaVues = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    dejaVues.push(obj.objet);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(dejaVues));
+  }
+
+  function changerVue() {
+    const affichage = document.getElementById("question");
+    const bouton = document.querySelector("button");
+
+    if (modeQuestion) {
+      affichage.textContent = reponseCourante;
+      bouton.textContent = "Question suivante";
+    } else {
       choisirQuestion();
-      document.getElementById("question").textContent = questionCourante;
-      document.querySelector("button").style.display = "inline-block";
+      affichage.textContent = questionCourante;
+      bouton.textContent = "Voir la réponse";
     }
 
-    function choisirQuestion() {
-      if (questions.length === 0) {
-        document.getElementById("question").textContent = "🎉 Toutes les questions ont été posées !";
-        document.querySelector("button").style.display = "none";
-        return;
-      }
-      const obj = questions.pop();
-      questionCourante = `${obj.objet}`;
-      reponseCourante = `Réponse : ${obj.couleur}`;
-    }
+    modeQuestion = !modeQuestion;
+  }
 
-    function changerVue() {
-      const affichage = document.getElementById("question");
-      const bouton = document.querySelector("button");
+  function reinitialiser() {
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload(); // recharge la page
+}
 
-      if (modeQuestion) {
-        affichage.textContent = reponseCourante;
-        bouton.textContent = "Question suivante";
-      } else {
-        choisirQuestion();
-        affichage.textContent = questionCourante;
-        bouton.textContent = "Voir la réponse";
-      }
-      modeQuestion = !modeQuestion;
-    }
+  chargerQuestions();
+</script>
 
-    // Lancer au démarrage
-    chargerQuestions();
-  </script>
 </body>
 </html>
